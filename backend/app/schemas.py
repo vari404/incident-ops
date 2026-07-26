@@ -25,6 +25,12 @@ class TicketCreate(BaseModel):
     priority: TicketPriority = TicketPriority.MEDIUM
 
 
+class TicketUpdate(BaseModel):
+    status: TicketStatus | None = None
+    priority: TicketPriority | None = None
+    assigned_agent: str | None = Field(default=None, max_length=100)
+
+
 class Ticket(TicketCreate):
     id: int
     status: TicketStatus
